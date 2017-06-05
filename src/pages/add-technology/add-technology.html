@@ -1,0 +1,49 @@
+<ion-header>
+   <ion-navbar color="primary">
+      <ion-title>{{ pageTitle }}</ion-title>
+   </ion-navbar>
+</ion-header>
+
+<ion-content>
+	<ion-item *ngIf="isEdited && !hideForm">
+		<button
+		ion-button
+		icon-left
+		color="danger"
+		text-center
+		block
+		(click)="deleteEntry()">
+		<ion-icon name="trash"></ion-icon>
+		Hapus isian ini?</button>
+	</ion-item>
+
+	<div *ngIf="hideForm">
+		<ion-label class="post-entry-message" text-wrap padding>
+			<h3>Berhasil!</h3>
+		</ion-label>
+	</div>
+
+	<div *ngIf="!hideForm">
+		<form [formGroup]="form" (ngSubmit)="saveEntry()">
+			<ion-list>
+				<ion-item>
+					<ion-label floating>nama TUGAS</ion-label>
+					<ion-input type="text" formControlName="name" [(ngModel)]="technologyName">
+					</ion-input>
+				</ion-item>
+				<br>
+				<ion-item>
+					<ion-label floating>deskripsi TUGAS</ion-label>
+					<ion-textarea type="text" formControlName="description"
+					rows="6" [(ngModel)]="technologyDescription"></ion-textarea>
+				</ion-item>
+				<ion-item>
+					<button ion-button icon-left color="primary" text-center
+					 block [disabled]="!form.valid">
+					 <ion-icon name="checkmark-circle"></ion-icon>
+					 Simpan</button>
+				</ion-item>
+			</ion-list>
+		</form>
+	</div>
+</ion-content>

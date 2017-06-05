@@ -1,0 +1,19 @@
+<ion-header>
+   <ion-navbar color="primary">
+      <ion-title>
+         Daftar TUGAS
+      </ion-title>
+      <ion-buttons end>
+  		<button ion-button icon-only (click)="addEntry()"><ion-icon name="add-circle"></ion-icon></button>
+  	  </ion-buttons>
+   </ion-navbar>
+</ion-header>
+
+<ion-content>
+   <ion-card *ngFor="let item of items" (click)="viewEntry({ record: item })">
+    <ion-card-content>
+      <h2><b>{{ item.name }} </b></h2><br>
+      <p>{{ item.description }}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
